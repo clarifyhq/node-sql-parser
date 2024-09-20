@@ -820,15 +820,25 @@ export interface for_loop_stmt_t {
 
 export type for_loop_stmt = AstStatement<for_loop_stmt_t>;
 
+export type transaction_mode_isolation_level = { type: 'origin'; value: string; } | ignore;
+
+export type transaction_mode = { type: 'origin'; value: string; } | ignore;
+
+export type transaction_mode_list = transaction_mode[];
+
 export interface transaction_stmt_t {
         type: 'transaction';
         expr: {
-          type: 'origin',
-          value: string
+          action: {
+            type: 'origin',
+            value: string
+          };
+          keyword?: string;
+          modes?: transaction_mode[];
         }
       }
 
-export type transaction_stmt = AstStatement<transaction_stmt_t>;
+export type transaction_stmt = AstStatement<transaction_stmt_t> | ignore;
 
 export interface select_stmt_node extends select_stmt_nake  {
        parentheses: true;
@@ -1628,6 +1638,8 @@ type KW_MEDIUMTEXT = never;
 
 type KW_LONGTEXT = never;
 
+type KW_MEDIUMINT = never;
+
 type KW_BIGINT = never;
 
 type KW_ENUM = never;
@@ -1899,8 +1911,6 @@ export type binary_type = data_type;
 
 export type character_varying = string;
 
-
-
 export type character_string_type = data_type;
 
 export type numeric_type_suffix = any[];;
@@ -1921,13 +1931,7 @@ export type timezone = string[];;
 
 
 
-
-
-
-
 export type time_type = data_type;
-
-
 
 
 
@@ -1948,8 +1952,6 @@ export type geometry_type = data_type;
 
 
 export type serial_interval_type = data_type;
-
-
 
 
 

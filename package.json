@@ -1,6 +1,6 @@
 {
-  "name": "node-sql-parser",
-  "version": "5.3.2",
+  "name": "@getclarify/node-sql-parser",
+  "version": "5.3.3",
   "description": "simple node sql parser",
   "main": "index.js",
   "types": "types.d.ts",
@@ -13,11 +13,11 @@
     "coverLocal": "cross-env NODE_ENV=coverage nyc --reporter=lcov --reporter=text npm run test",
     "cover:run": "cross-env NODE_ENV=coverage nyc --reporter=text-lcov npm run test",
     "cover": "npm run cover:run && nyc report --reporter=text-lcov | coveralls",
-    "release": "npm run build && npm publish output/prod"
+    "release": "npm run build && npm publish --access=public output/prod"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/taozhi8833998/node-sql-parser.git"
+    "url": "git+https://github.com/clarifyhq/node-sql-parser.git"
   },
   "pre-commit": "coverLocal",
   "keywords": [
@@ -98,5 +98,9 @@
   "dependencies": {
     "@types/pegjs": "^0.10.0",
     "big-integer": "^1.6.48"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }
